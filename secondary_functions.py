@@ -1,0 +1,63 @@
+#secondary functions
+from collections import Counter
+import re
+from extensions import *
+
+def find_prefixes(strings):
+    prefix_cnts = Counter()                   
+    pattern = re.compile('[^a-zA-Z0-9]')     
+    for string in strings:
+        arr = pattern.split(string)  
+        for pos, prefix in enumerate(arr[:-1]):
+            if not prefix.isdigit():
+                prefix_cnts[f'{prefix} {pos}'] += 1     
+    
+    prefix_cnts = {k:v for k, v in prefix_cnts.items() if v > 1}
+    prefix_cnts = sorted(prefix_cnts.items(), key = lambda kv: (-kv[1], int(kv[0].split()[1])))
+    prefixes = [k for k, v in prefix_cnts]
+    prefix_cnts = Counter(prefixes)
+
+    for string in strings:
+        arr = pattern.split(string)  
+        for pos, prefix in enumerate(arr[:-1]):   
+            token = f'{prefix} {pos}'
+            if token in prefixes:
+                prefix_cnts[token] += 1           
+                break
+           
+    prefixes = {k.split()[0] for k, v in prefix_cnts.items() if v > 1}
+    mapping = {}
+
+    for string in strings:
+        arr = pattern.split(string)   
+        for prefix in arr[:-1]:   
+            if prefix in prefixes:
+                mapping[string] = prefix
+                break
+        else:
+            mapping[string] = 'other'
+                
+    return prefixes
+
+def find_common_keyword(filenames):
+    final = []
+    sub_strings = []
+    delimiters = ['.', ',', '!', ' ', '-', ';', '?', '*', '!', '@', '#', '$', '%', '^', '&', '(', ')', '_', '/', '|', '<', '>']
+    
+    for filename in filenames:
+        filename = filename.lower()
+        filename = filename.split('.')[0]
+        regexPattern = '|'.join(map(re.escape, delimiters))
+        sub_string = re.split(regexPattern, filename, 0)
+        sub_strings.append(sub_string[0])
+
+    for sub_string in sub_strings:
+        if sub_strings.count(sub_string) > 1 and not sub_string.isdigit() and sub_string != '':
+            final.append(sub_string)
+
+    return set(final)
+
+def get_key(val):
+    for key, value in extensions.items():
+         if val == value:
+             return key
