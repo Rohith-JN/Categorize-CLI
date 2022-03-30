@@ -4,10 +4,11 @@ import re
 from extensions import *
 from secondary_functions import *
 
+
 path = "D:\\Test"
 folder_to_track = os.path.normpath(path)
 
-#categorize files based on extensions
+
 def all_extensions_category():
     
     for file in os.listdir(folder_to_track):
@@ -37,7 +38,7 @@ def all_extensions_category():
     else:
         return print(f'{folder_to_track}: is either empty or not organizable')
         
-#categorize files based on keyword
+
 def name_category():
     file_mappings = collections.defaultdict()
     sub_file_names = []
@@ -162,37 +163,46 @@ def specific_name_category(keyword):
     else:
         return print(f'{folder_to_track}: is either empty or not organizable')
 
-#user will enter a category like textFiles
+
 def extension_category(extension):
-    if os.listdir(folder_to_track).__len__() != 0:
-        try:
-            file_mappings = collections.defaultdict()
-            for filename in os.listdir(folder_to_track):
-                if not os.path.isdir(os.path.join(folder_to_track, filename)):
-                    file_mappings.setdefault(get_key(extension), []).append(filename)
-
-            for folder_name, folder_items in file_mappings.items():
-                folder_path = os.path.join(folder_to_track, folder_name)
-                if not os.path.exists(folder_path):
-                    os.mkdir(folder_path)
-
+    success = False
+    for file in os.listdir(folder_to_track):
+        if os.path.isdir(os.path.join(folder_to_track, file)) == False and os.listdir(folder_to_track).__len__() != 0:
+            try:
+                file_mappings = collections.defaultdict()
                 for filename in os.listdir(folder_to_track):
-                    i = 1
                     for value in extension:
-                        if not os.path.isdir(os.path.join(folder_to_track, filename)) and filename.endswith(value):
-                            new_name = filename
-                            file_exits = os.path.isfile(folder_path + '\\' + new_name)
-                            while file_exits:
-                                i += 1
-                                new_name = os.path.splitext(folder_to_track + '\\' + new_name)[0] + str(i) + os.path.splitext(folder_to_track + '\\' + new_name)[1]   
-                                new_name = new_name.split("\\")[4]
-                                file_exits = os.path.isfile(folder_path + "\\" + new_name)
-                            src = folder_to_track + "\\" + filename
-                            new_name = folder_path + "\\" + new_name
-                            os.rename(src, new_name)
+                        if not os.path.isdir(os.path.join(folder_to_track, filename)) and any(filename.endswith(value) for filename in os.listdir(folder_to_track)) == True:
+                            file_mappings.setdefault(get_key(extension), []).append(filename)
 
-        except Exception as e:
-            print(e) 
+                for folder_name, folder_items in file_mappings.items():
+                    folder_path = os.path.join(folder_to_track, folder_name)
+                    if not os.path.exists(folder_path):
+                        os.mkdir(folder_path)
+
+                    for filename in os.listdir(folder_to_track):
+                        i = 1
+                        for value in extension:
+                            if not os.path.isdir(os.path.join(folder_to_track, filename)) and filename.endswith(value):
+                                new_name = filename
+                                file_exits = os.path.isfile(folder_path + '\\' + new_name)
+                                while file_exits:
+                                    i += 1
+                                    new_name = os.path.splitext(folder_to_track + '\\' + new_name)[0] + str(i) + os.path.splitext(folder_to_track + '\\' + new_name)[1]   
+                                    new_name = new_name.split("\\")[4]
+                                    file_exits = os.path.isfile(folder_path + "\\" + new_name)
+                                src = folder_to_track + "\\" + filename
+                                new_name = folder_path + "\\" + new_name
+                                os.rename(src, new_name)
+                                success = True
+
+                    if success:
+                        return print("Successfully organized files based on specified extension")
+                    elif not success:
+                        return print("No file with that extension exists")
+
+            except Exception as e:
+                return print(f'{folder_to_track}: is either empty or not organizable')
+    
     else:
-        return print(f'{folder_to_track} is either empty or not organizable')
-        
+        return print(f'{folder_to_track}: is either empty or no file with that extension exists')
