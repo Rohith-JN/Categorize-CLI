@@ -1,12 +1,13 @@
 import os
 import collections
 import re
+from extensions import *
 
 path = ""
 folder_to_track = os.path.normpath(path)
 
 #categorize files based on extensions
-def extension_category():
+def all_extensions_category():
     try:
         file_mappings = collections.defaultdict()
         for filename in os.listdir(folder_to_track):
@@ -33,7 +34,7 @@ def name_category():
     sub_file_names = []
     file_names = []
     delimiters = ['.', ',', '!', ' ', '-', ';', '?', '*', '!', '@', '#', '$', '%', '^', '&', '(', ')', '_', '/', '|', '<', '>']
-    if os.listdir(folder_to_track).__len__() == 0:
+    if os.listdir(folder_to_track).__len__() != 0:
         try:
             for filename in os.listdir(folder_to_track):
                 filename = filename.lower()
@@ -96,7 +97,42 @@ def name_category():
         except Exception as e:
             print(e)
     else:
-        print(f'{folder_to_track} is either empty or not organizable')
+        return print(f'{folder_to_track} is either empty or not organizable')
+
+#user will enter a category like textFiles
+def extension_category(extension):
+    if os.listdir(folder_to_track).__len__() != 0:
+        try:
+            file_mappings = collections.defaultdict()
+            for filename in os.listdir(folder_to_track):
+                if not os.path.isdir(os.path.join(folder_to_track, filename)):
+                    file_mappings.setdefault(get_key(extension), []).append(filename)
+
+            for folder_name, folder_items in file_mappings.items():
+                folder_path = os.path.join(folder_to_track, folder_name)
+                if not os.path.exists(folder_path):
+                    os.mkdir(folder_path)
+
+                for filename in os.listdir(folder_to_track):
+                    i = 1
+                    for value in extension:
+                        if not os.path.isdir(os.path.join(folder_to_track, filename)) and filename.endswith(value):
+                            new_name = filename
+                            file_exits = os.path.isfile(folder_path + '\\' + new_name)
+                            while file_exits:
+                                i += 1
+                                new_name = os.path.splitext(folder_to_track + '\\' + new_name)[0] + str(i) + os.path.splitext(folder_to_track + '\\' + new_name)[1]   
+                                new_name = new_name.split("\\")[4]
+                                file_exits = os.path.isfile(folder_path + "\\" + new_name)
+                            src = folder_to_track + "\\" + filename
+                            new_name = folder_path + "\\" + new_name
+                            os.rename(src, new_name)
+
+        except Exception as e:
+            print(e) 
+    else:
+        return print(f'{folder_to_track} is either empty or not organizable')
+        
 
 #secondary functions
 from collections import Counter
@@ -154,3 +190,8 @@ def find_common_keyword(filenames):
             final.append(sub_string)
 
     return set(final)
+
+def get_key(val):
+    for key, value in extensions.items():
+         if val == value:
+             return key
