@@ -3,7 +3,7 @@ import collections
 import re
 from extensions import *
 
-path = ""
+path = "C:\\Users\\ACERq\\Pictures\\Saved Pictures"
 folder_to_track = os.path.normpath(path)
 
 #categorize files based on extensions
@@ -83,6 +83,48 @@ def name_category():
                         regexPattern = '|'.join(map(re.escape, delimiters))
                         splittedstring = re.split(regexPattern, filename, 0)
                         if not os.path.isdir(os.path.join(folder_to_track, filename)):
+                            new_name = filename
+                            file_exits = os.path.isfile(folder_path + '\\' + new_name)
+                            while file_exits:
+                                i += 1
+                                new_name = os.path.splitext(folder_to_track + '\\' + new_name)[0] + str(i) + os.path.splitext(folder_to_track + '\\' + new_name)[1]   
+                                new_name = new_name.split("\\")[4]
+                                file_exits = os.path.isfile(folder_path + "\\" + new_name)
+                            src = folder_to_track + "\\" + filename
+                            new_name = folder_path + "\\" + new_name
+                            os.rename(src, new_name)
+            
+        except Exception as e:
+            print(e)
+    else:
+        return print(f'{folder_to_track} is either empty or not organizable')
+
+def specific_name_category(keyword):
+    file_mappings = collections.defaultdict()
+    file_names = []
+    keyword = keyword.lower()
+    delimiters = ['.', ',', '!', ' ', '-', ';', '?', '*', '!', '@', '#', '$', '%', '^', '&', '(', ')', '_', '/', '|', '<', '>']
+    if os.listdir(folder_to_track).__len__() != 0:
+        try:
+            for filename in os.listdir(folder_to_track):
+                filename = filename.lower()
+                file_names.append(filename)
+
+            for filename in os.listdir(folder_to_track):
+                if not os.path.isdir(os.path.join(folder_to_track, filename)):
+                    file_mappings.setdefault(keyword, []).append(filename)
+
+            for folder_name, folder_items in file_mappings.items():
+                folder_path = os.path.join(folder_to_track, folder_name)
+                if not os.path.exists(folder_path):
+                    os.mkdir(folder_path)
+                    
+                    for filename in file_names:
+                        filename = filename.lower()
+                        i = 1
+                        regexPattern = '|'.join(map(re.escape, delimiters))
+                        splittedstring = re.split(regexPattern, filename, 0)
+                        if folder_name in splittedstring:
                             new_name = filename
                             file_exits = os.path.isfile(folder_path + '\\' + new_name)
                             while file_exits:
