@@ -3,7 +3,7 @@ import collections
 import re
 from extensions import *
 
-path = "C:\\Users\\ACERq\\Pictures\\Saved Pictures"
+path = ""
 folder_to_track = os.path.normpath(path)
 
 #categorize files based on extensions
