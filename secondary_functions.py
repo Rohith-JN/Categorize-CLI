@@ -1,5 +1,6 @@
 #secondary functions
 from collections import Counter
+import os
 import re
 from extensions import *
 
@@ -61,3 +62,14 @@ def get_key(val):
     for key, value in extensions.items():
          if val == value:
              return key
+
+def check_files(folder_to_track):
+    files = os.listdir(folder_to_track)
+    isdir = any(os.path.isdir(os.path.join(folder_to_track, file + '//')) for file in files)
+    allisdir = all(os.path.isdir(os.path.join(folder_to_track, file + '//')) for file in files)
+    
+    if allisdir or files.__len__() == 0:
+        return False
+    else: 
+        return True
+

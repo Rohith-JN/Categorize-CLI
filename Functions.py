@@ -2,44 +2,42 @@ import os
 import collections
 import re
 from extensions import *
-from secondary_functions import *
+from Secondary_functions import *
 
+def all_extensions_category(folder_to_track):
+    if check_files(folder_to_track) == True:
+        for file in os.listdir(folder_to_track):
+            if os.path.isdir(os.path.join(folder_to_track, file)) == False and os.listdir(folder_to_track).__len__() != 0:
+                try:
+                    file_mappings = collections.defaultdict()
+                    for filename in os.listdir(folder_to_track):
+                        if not os.path.isdir(os.path.join(folder_to_track, filename)):
+                            file_type = filename.split('.')[-1]
+                            file_mappings.setdefault(file_type, []).append(filename)
+        
+                    for folder_name, folder_items in file_mappings.items():
+                        folder_path = os.path.join(folder_to_track, folder_name)
+                        folder_exists = os.path.exists(folder_path)
 
-path = "D:\\Test"
-folder_to_track = os.path.normpath(path)
-
-
-def all_extensions_category():
-    
-    for file in os.listdir(folder_to_track):
-        if os.path.isdir(os.path.join(folder_to_track, file)) == False and os.listdir(folder_to_track).__len__() != 0:
-            try:
-                file_mappings = collections.defaultdict()
-                for filename in os.listdir(folder_to_track):
-                    if not os.path.isdir(os.path.join(folder_to_track, filename)):
-                        file_type = filename.split('.')[-1]
-                        file_mappings.setdefault(file_type, []).append(filename)
-    
-                for folder_name, folder_items in file_mappings.items():
-                    folder_path = os.path.join(folder_to_track, folder_name)
-                    if not os.path.exists(folder_path):
-                        os.mkdir(folder_path)
-    
-                    for folder_item in folder_items:
-                        source = os.path.join(folder_to_track, folder_item)
-                        destination = os.path.join(folder_path, folder_item)
-                        os.rename(source, destination)
-                
-                return print("Successfully organized files based on extension")
-                        
-            except Exception as e:
-                return print(f'{folder_to_track}: is either empty or not organizable')
+                        if not folder_exists:
+                            os.mkdir(folder_path)
+        
+                        for folder_item in folder_items:
+                            source = os.path.join(folder_to_track, folder_item)
+                            destination = os.path.join(folder_path, folder_item)
+                            os.rename(source, destination)                    
+                            
+                    return "Successfully organized files based on extension"
+                            
+                except Exception as e:
+                    return f'{folder_to_track}: is either empty or not organizable'
     
     else:
-        return print(f'{folder_to_track}: is either empty or not organizable')
-        
+        return f'{folder_to_track}: is either empty or not organizable'
 
-def name_category():
+all_extensions_category("D:\\Test")
+
+def name_category(folder_to_track):
     file_mappings = collections.defaultdict()
     sub_file_names = []
     file_names = []
@@ -104,15 +102,15 @@ def name_category():
                                 src = folder_to_track + "\\" + filename
                                 new_name = folder_path + "\\" + new_name
                                 os.rename(src, new_name)
-                return print("Successfully organized files based on name")
+                                
+                return "Successfully organized files based on name"
 
             except Exception as e:
-                return print(f'{folder_to_track}: is either empty or not organizable')
+                return f'{folder_to_track}: is either empty or not organizable'
     else:
-        return print(f'{folder_to_track}: is either empty or not organizable')
+        return f'{folder_to_track}: is either empty or not organizable'
 
-
-def specific_name_category(keyword):
+def specific_name_category(keyword, folder_to_track):
     file_mappings = collections.defaultdict()
     file_names = []
     success = False
@@ -154,17 +152,16 @@ def specific_name_category(keyword):
                                 os.rename(src, new_name)
                                 success = True
                 if success:
-                    return print("Successfully organized files based on specified keyword")
+                    return "Successfully organized files based on specified keyword"
                 elif not success:
-                    return print("No file containing that keyword exists")
+                    return "No file containing that keyword exists"
 
             except Exception as e:
-                return print(f'{folder_to_track}: is either empty or not organizable')
+                return f'{folder_to_track}: is either empty or not organizable'
     else:
-        return print(f'{folder_to_track}: is either empty or not organizable')
+        return f'{folder_to_track}: is either empty or not organizable'
 
-
-def extension_category(extension):
+def extension_category(extension, folder_to_track):
     success = False
     for file in os.listdir(folder_to_track):
         if os.path.isdir(os.path.join(folder_to_track, file)) == False and os.listdir(folder_to_track).__len__() != 0:
@@ -197,12 +194,12 @@ def extension_category(extension):
                                 success = True
 
                     if success:
-                        return print("Successfully organized files based on specified extension")
+                        return "Successfully organized files based on specified extension"
                     elif not success:
-                        return print("No file with that extension exists")
+                        return "No file with that extension exists"
 
             except Exception as e:
-                return print(f'{folder_to_track}: is either empty or not organizable')
+                return f'{folder_to_track}: is either empty or not organizable'
     
     else:
-        return print(f'{folder_to_track}: is either empty or no file with that extension exists')
+        return f'{folder_to_track}: is either empty or no file with that extension exists'
