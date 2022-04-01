@@ -1,15 +1,19 @@
 import os
 import collections
 import re
+from shutil import move
+from sre_constants import SUCCESS
 from extensions import *
 from Secondary_functions import *
 
 def all_extensions_category(folder_to_track):
-    if check_files(folder_to_track) == True:
+    movedFiles = False
+    if check_files(folder_to_track):
         for file in os.listdir(folder_to_track):
-            if os.path.isdir(os.path.join(folder_to_track, file)) == False and os.listdir(folder_to_track).__len__() != 0:
+            if not os.path.isdir(os.path.join(folder_to_track, file)):
                 try:
                     file_mappings = collections.defaultdict()
+
                     for filename in os.listdir(folder_to_track):
                         if not os.path.isdir(os.path.join(folder_to_track, filename)):
                             file_type = filename.split('.')[-1]
@@ -22,20 +26,29 @@ def all_extensions_category(folder_to_track):
                         if not folder_exists:
                             os.mkdir(folder_path)
         
-                        for folder_item in folder_items:
-                            source = os.path.join(folder_to_track, folder_item)
-                            destination = os.path.join(folder_path, folder_item)
-                            os.rename(source, destination)                    
-                            
-                    return "Successfully organized files based on extension"
+                            for folder_item in folder_items:
+                                source = os.path.join(folder_to_track, folder_item)
+                                destination = os.path.join(folder_path, folder_item)
+                                moveIncrementing(source, destination)
+                                movedFiles = True
+                                
+                        if folder_exists:
+                            for folder_item in folder_items:
+                                source = os.path.join(folder_to_track, folder_item)
+                                destination = os.path.join(folder_path, folder_item)
+                                moveIncrementing(source, destination)
+                                movedFiles = True
+
+                    if movedFiles:
+                        return "Successfully moved files"
+                    else:
+                        return "Couldn't move files"
                             
                 except Exception as e:
                     return f'{folder_to_track}: is either empty or not organizable'
     
     else:
         return f'{folder_to_track}: is either empty or not organizable'
-
-all_extensions_category("D:\\Test")
 
 def name_category(folder_to_track):
     file_mappings = collections.defaultdict()

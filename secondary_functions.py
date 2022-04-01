@@ -73,3 +73,18 @@ def check_files(folder_to_track):
     else: 
         return True
 
+def moveIncrementing(source, destination):
+    i = 0
+    destination_name = os.path.splitext(destination)[0]
+    destination_extension = os.path.splitext(destination)[-1]
+    while True:
+        try:
+            if i == 0:
+                destination = destination_name + destination_extension
+            else:
+                destination = destination_name + " " + "(" + str(i) + ")" + destination_extension
+
+            return os.rename(source, destination if i else destination)
+            
+        except OSError as ex:
+            i = i + 1
