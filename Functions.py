@@ -329,3 +329,60 @@ def year_category(folder_to_track):
             return f'{folder_to_track}: is either empty or not organizable'
     else:
         return f'{folder_to_track}: is either empty or not organizable'
+
+
+def month_year_category(folder_to_track):
+    years = set()
+    months = set()
+    if check_files:
+        
+            for file in os.listdir(folder_to_track):
+                if not os.path.isdir(os.path.join(folder_to_track, file)):
+                    raw_time = os.path.getctime(os.path.join(folder_to_track, file))
+                    year = time.ctime(raw_time)[-4:]
+                    years.add(year)
+
+            for year in years:
+                folder_path = os.path.join(folder_to_track, year)
+                folder_exists = os.path.exists(folder_path)
+                folder_name = year
+
+                if not folder_exists:
+                    os.mkdir(folder_path)
+
+                    for filename in os.listdir(folder_to_track):
+                        if not os.path.isdir(os.path.join(folder_to_track, filename)):
+                            file_raw_time = os.path.getctime(os.path.join(folder_to_track, filename))
+                            file_year = time.ctime(file_raw_time)[-4:]
+                            if folder_name == file_year:
+                                source = os.path.join(folder_to_track, filename)
+                                destination = os.path.join(folder_path, filename)
+                                moveIncrementing(source, destination) 
+
+                if folder_exists:
+
+                    for filename in os.listdir(folder_to_track):
+                        if not os.path.isdir(os.path.join(folder_to_track, filename)):
+                            file_raw_time = os.path.getctime(os.path.join(folder_to_track, filename))
+                            file_year = time.ctime(file_raw_time)[-4:]
+                            if folder_name == file_year:
+                                source = os.path.join(folder_to_track, filename)
+                                destination = os.path.join(folder_path, filename)
+                                moveIncrementing(source, destination) 
+                                
+            for filename in os.listdir(folder_to_track):
+                if os.path.isdir(os.path.join(folder_to_track, filename)):
+                    for file in os.listdir(os.path.join(folder_to_track, filename)):
+                        raw_time = os.path.getctime(os.path.join(folder_to_track, filename, file))
+                        month = time.ctime(raw_time).split(' ')[1]
+                        months.add(month)
+
+                        folder_path = os.path.join(folder_to_track, filename, month)
+                        folder_exists = os.path.exists(folder_path)
+                        folder_name = month
+
+                        if not folder_exists:
+                            os.mkdir(folder_path)
+                            
+    else:
+        return "Could not move files"

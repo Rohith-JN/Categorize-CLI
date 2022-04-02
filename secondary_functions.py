@@ -89,6 +89,7 @@ def moveIncrementing(source, destination):
                 
             except OSError as ex:
                 i = i + 1
+                pass
     except Exception as e:
         pass
 
