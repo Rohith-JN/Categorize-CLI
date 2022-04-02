@@ -1,6 +1,6 @@
 
 extensions = {
-    "text": [".txt", ".rtf"],
+    "text": [".txt", ".rtf", ".in", ".out"],
     "image": [".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff", ".webp"],
     "audio" : [".wav", ".mp3", ".ogg", ".gsm", ".dct", ".flac", ".au", ".aiff", ".vox", "raw", ".wma", ".aac", ".atrac",
               ".ra", ".oma", ".omg", ".atp", ".waptt", ".i3pack", ".3ga", ".opus", ".cda", ".wpl", ".rec", ".vdjsample",
@@ -21,7 +21,13 @@ extensions = {
     "executables": [".exe", ".msi", ".apk", ".bat", ".com"],
     "pdf": [".pdf"],
     "font": [".fnt", ".fon", ".otf", ".ttf", ".woff",
-             ".woff2", ".ofm", ".bmap", ".frf", ".afs"]                 
+             ".woff2", ".ofm", ".bmap", ".frf", ".afs"],
+    "archives": [".a", ".ar", ".cpio", ".iso", ".tar", ".gz", ".rz", ".7z",
+                 ".dmg", ".rar", ".xar", ".zip"],       
+    "Documents": [".oxps", ".epub", ".pages", ".docx", ".doc", ".fdf", ".ods",
+                  ".odt", ".pwi", ".xsn", ".xps", ".dotx", ".docm", ".dox",
+                  ".rvg", ".rtf", ".rtfd", ".wpd", ".xls", ".xlsx", ".ppt",
+                  "pptx"],                   
 }
 
 text = extensions.get("text")
@@ -37,4 +43,6 @@ access = extensions.get("access")
 executables = extensions.get("executables")
 pdf = extensions.get("pdf")
 font = extensions.get("font")
+archives = extensions.get("archives")
+documents = extensions.get("documents")
 
