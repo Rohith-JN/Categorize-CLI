@@ -9,8 +9,6 @@ extensions = {
               ".eac3", ".mogg", ".au", ".seq", ".uax", ".mid", ".kar", ".dlp", ".vce", ".spx", ".m4r", ".wax"],
     "video": [".webm", ".mpg", ".mp2", ".mpeg", ".mpe", ".mpv", ".mp4", ".m4p", ".m4v", ".avi", ".wmv", ".mov", ".qt",
               ".flv", ".swf", ".avchd", ".vob", ".rm", ".avi", ".3gp", ".3g2", ".mkv", ".MOV"],
-    "gif": [".gif"],
-    "photoshop": [".psd"],
     "word": [".doc", ".docx", ".asd", ".dotx",
              ".svd", ".dot", ".wbk", ".docm", ".dotm", ".wll"],
     "powerpoint": [".pptx", ".pptm", ".ppt", ".pps", ".ppsx", ".ppsm",
@@ -30,19 +28,9 @@ extensions = {
                   "pptx"],                   
 }
 
-text = extensions.get("text")
-image = extensions.get("image")
-audio = extensions.get("audio")
-video = extensions.get("Video")
-gif = extensions.get("gif")
-photoshop = extensions.get("photoshop")
-word = extensions.get("word")
-powerpoint = extensions.get("powerpoint")
-excel = extensions.get("excel")
-access = extensions.get("access")
-executables = extensions.get("executables")
-pdf = extensions.get("pdf")
-font = extensions.get("font")
-archives = extensions.get("archives")
-documents = extensions.get("documents")
-
+'''
+Todo:
+1) add adobe extensions
+2) add code extensions
+3) add more extensions in documents
+'''

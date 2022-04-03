@@ -281,7 +281,7 @@ def specific_name_category(keyword, folder_to_track):
         return f'{folder_to_track}: is either empty or not organizable'
 
 
-# Group 3: Organize files based on time
+# Group 3: Organize files based on creation-time
 def year_category(folder_to_track):
     start_time = time.monotonic()
     movedFiles = False

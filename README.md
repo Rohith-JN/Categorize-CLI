@@ -1,10 +1,58 @@
-# Categorizer
-> A simple program made using Python to automate files from a specific folder.
+# Categorize-CLI
 
-## Todo
+Categorize-CLI is a command-line-tool made using python to organize files in a given directory based on categories like
+extension, keyword, creation time, etc.
 
-1) Make more categories like kind, extension, size, or date to organise the files in folders
-2) Organize files based on both year created, month created 
-if some files belong to the same year make a folder with that year then inside that folder make a folder with that month then move all the files corresponding to that year and month into that folder
-3) Organize files based on just year
-if some files belong to the same year make a folder with that year then move all the files with that year into that folder
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Categorize-CLI.
+
+```
+pip install Categorize-CLI
+```
+
+## Usage
+
+### Extensions:
+Running this command will organize the files based on the command specified
+```
+Categorize --ext [Command]
+```
+This command does the same as above but in the directory or path specified
+```
+Categorize --ext [Command] "path" will organize files in the given path
+```
+Commands:
+```
+[text, image, audio, video, word, powerpoint, excel, access, executables, pdf, archives, documents]
+```
+### Keyword:
+Running this command will organize the files based on the common keyword present in the file names
+```
+Categorize --key
+```
+Running this command will organize the files based on the specified keyword present in the file names
+```
+Categorize --key "keyword"
+```
+This command does the same as above but in the directory or path specified
+```
+Categorize --key "keyword" "path" will organize files in the given path
+```
+
+### Creation time:
+This command will organize files based on which year it was created
+```
+Categorize --year
+```
+This command does the same as above but in the directory or path specified
+```
+Categorize --year "path" 
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
