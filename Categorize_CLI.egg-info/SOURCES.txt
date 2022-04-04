@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+Categorize_CLI.egg-info/PKG-INFO
+Categorize_CLI.egg-info/SOURCES.txt
+Categorize_CLI.egg-info/dependency_links.txt
+Categorize_CLI.egg-info/entry_points.txt
+Categorize_CLI.egg-info/requires.txt
+Categorize_CLI.egg-info/top_level.txt
+src/__init__.py
+src/main.py

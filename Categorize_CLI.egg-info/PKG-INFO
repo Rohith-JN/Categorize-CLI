@@ -1,3 +1,21 @@
+Metadata-Version: 2.1
+Name: Categorize-CLI
+Version: 0.1.0
+Summary: Categorize-CLI is a command-line-tool made using python to organize files in a given directory
+Home-page: https://github.com/Rohith-JN/Categorize-CLI
+Author: Rohith Nambiar
+Author-email: rohithnambiar04@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # Categorize-CLI
 
 Categorize-CLI is a command-line-tool made using python to organize files in a given directory based on categories like
@@ -17,17 +35,11 @@ pip install Categorize-CLI
 ### Extensions:
 Running this command will organize the files based on the command specified
 ```
-Categorize ext -t [command]
-```
-```
-Categorize ext --type [command]
+Categorize --ext [Command]
 ```
 This command does the same as above but in the directory or path specified
 ```
-Categorize ext -t [Command] -p "path"
-```
-```
-Categorize ext --type [Command] --path "path" 
+Categorize --ext [Command] "path" will organize files in the given path
 ```
 Commands:
 ```
@@ -36,31 +48,25 @@ Commands:
 ### Keyword:
 Running this command will organize the files based on the common keyword present in the file names
 ```
-Categorize key
+Categorize --key
 ```
 Running this command will organize the files based on the specified keyword present in the file names
 ```
-Categorize key "keyword"
+Categorize --key "keyword"
 ```
 This command does the same as above but in the directory or path specified
 ```
-Categorize key "keyword" -p "path" 
-```
-```
-Categorize key "keyword" --path "path"
+Categorize --key "keyword" "path" will organize files in the given path
 ```
 
 ### Creation time:
 This command will organize files based on which year it was created
 ```
-Categorize year
+Categorize --year
 ```
 This command does the same as above but in the directory or path specified
 ```
-Categorize year -p "path" 
-```
-```
-Categorize year --path "path" 
+Categorize --year "path" 
 ```
 
 ## Contributing
@@ -68,3 +74,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+

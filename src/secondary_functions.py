@@ -2,7 +2,9 @@
 from collections import Counter
 import os
 import re
-from extensions import *
+import time
+from src.extensions import *
+from progress.bar import IncrementalBar 
 
 def find_prefixes(strings):
     prefix_cnts = Counter()                   
@@ -93,3 +95,12 @@ def moveIncrementing(source, destination):
     except Exception as e:
         pass
 
+def displayProgressbar(item_count):
+    if (item_count > 0):
+        bar = IncrementalBar('Organizing...', max=item_count)
+
+        for i in range(item_count):
+            bar.next()
+            time.sleep(0.01)
+
+        bar.finish()

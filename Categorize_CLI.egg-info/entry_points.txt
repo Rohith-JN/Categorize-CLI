@@ -1,0 +1,2 @@
+[console_scripts]
+Categorize = src.main:main
