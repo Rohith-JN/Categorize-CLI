@@ -1,5 +1,5 @@
 import click
-from src.services.key_functions import *
+from src.Categorize_CLI.services.key_functions import *
 
 class Context:
     def __init__(self, keyword, path):

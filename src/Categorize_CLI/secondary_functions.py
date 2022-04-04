@@ -3,7 +3,7 @@ from collections import Counter
 import os
 import re
 import time
-from src.extensions import *
+from src.Categorize_CLI.extensions import *
 from progress.bar import IncrementalBar 
 
 def find_prefixes(strings):

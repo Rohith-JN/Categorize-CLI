@@ -1,7 +1,7 @@
 import os
 import collections
-from src.extensions import *
-from src.secondary_functions import *
+from src.Categorize_CLI.extensions import *
+from src.Categorize_CLI.secondary_functions import *
 import time
 from datetime import timedelta
 
