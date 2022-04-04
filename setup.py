@@ -25,7 +25,7 @@ setup(
     ],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=['Click', 'colorama'],
+    install_requires=['Click', 'colorama', 'progress'],
 
     entry_points=""" 
         [console_scripts] 

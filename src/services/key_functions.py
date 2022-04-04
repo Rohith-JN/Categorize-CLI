@@ -90,10 +90,9 @@ def name_category(folder_to_track):
                         else:
                             return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
                     else:
-                        return "Couldn't move files"
+                        return f"{folder_to_track}: is either empty or not organizable"
 
                 except Exception as e:
-                    print(e)
                     return f'{folder_to_track}: is either empty or not organizable'
     else:
         return f'{folder_to_track}: is either empty or not organizable'
@@ -118,7 +117,9 @@ def specific_name_category(keyword, folder_to_track):
                         file_names.append(filename)
 
                     for filename in os.listdir(folder_to_track):
-                        if not os.path.isdir(os.path.join(folder_to_track, filename)):
+                        filename = filename.lower()
+                        splittedstring = re.split(regexPattern, filename, 0)
+                        if not os.path.isdir(os.path.join(folder_to_track, filename)) and keyword in splittedstring:
                             file_mappings.setdefault(keyword, []).append(filename)
 
                     for folder_name, folder_items in file_mappings.items():
@@ -159,7 +160,7 @@ def specific_name_category(keyword, folder_to_track):
                         else:
                             return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
                     else:
-                        return "Couldn't move files"
+                        return f"{folder_to_track}: is either empty or not organizable"
 
                 except Exception as e:
                     return f'{folder_to_track}: is either empty or not organizable'

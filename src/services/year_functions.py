@@ -10,7 +10,7 @@ def year_category(folder_to_track):
     start_time = time.monotonic()
     movedFiles = False
     years = set()
-    count = 1
+    count = 0
     if check_files:
         try:
             for file in os.listdir(folder_to_track):
@@ -61,7 +61,7 @@ def year_category(folder_to_track):
                 else:
                     return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
             else:
-                return "Couldn't move files"
+                return f'{folder_to_track}: is either empty or not organizable'
 
         except Exception as e:
             return f'{folder_to_track}: is either empty or not organizable'
