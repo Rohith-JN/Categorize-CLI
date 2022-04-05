@@ -57,6 +57,9 @@ Running this command will organize the files based on the specified keyword pres
 ```
 Categorize key -k "keyword"
 ```
+```
+Categorize key --keyword "keyword"
+```
 
 ### Creation time:
 
@@ -68,9 +71,12 @@ Categorize year
 
 ### Other
 
+Run this command to get more info on the `commands` and its `options`
+
 ```
 Categorize [command] --help
 ```
+
 If you do not want to organize files in the working directory and want to organize files in another path then you can just specify the path using this option `-p` or `--path`
 
 ```
