@@ -1,5 +1,7 @@
 # Categorize-CLI
 
+![](https://img.shields.io/pypi/v/Categorize-CLI?color=blue&style=flat-square) ![](https://img.shields.io/github/license/Rohith-JN/Categorize-CLI?color=green&style=flat-square)
+
 Categorize-CLI is a command-line-tool made using python to organize files in a given directory based on categories like
 extension, keyword, creation time, etc.
 
