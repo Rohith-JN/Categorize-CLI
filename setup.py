@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-import setuptools
 
 
 with open("README.md", "r") as fh:
@@ -13,7 +12,7 @@ setup(
     description='Categorize-CLI is a command-line-tool made using python to organize files in a given directory',
     url="https://github.com/Rohith-JN/Categorize-CLI",
     author="Rohith Nambiar",
-    packages=find_packages(),
+    packages=find_packages(exclude="tests"),
     include_package_data=True,
     author_email='rohithnambiar04@gmail.com',
     classifiers=[
