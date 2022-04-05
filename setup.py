@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
 setup(
 
     name='Categorize-CLI',
-    version='0.3.0',
+    version='0.5.0',
     description='Categorize-CLI is a command-line-tool made using python to organize files in a given directory',
     url="https://github.com/Rohith-JN/Categorize-CLI",
     author="Rohith Nambiar",
@@ -33,6 +33,6 @@ setup(
 
     entry_points=""" 
         [console_scripts] 
-        Categorize=src.main:main
+        Categorize=src.Categorize_CLI.main:main
         """
 )

@@ -15,7 +15,7 @@ class ComplexCLI(click.MultiCommand):
 
     def get_command(self, ctx, name):
         try:
-            mod = __import__(f"src.commands.{name}", None, None, ["main"])
+            mod = __import__(f"src.Categorize_CLI.commands.{name}", None, None, ["main"])
         except ImportError:
             return
         return mod.main
@@ -25,3 +25,4 @@ class ComplexCLI(click.MultiCommand):
 def main():
     """Welcome to Categorize!"""
     pass
+

@@ -1,0 +1,2 @@
+[console_scripts]
+Categorize = src.Categorize_CLI.main:main
