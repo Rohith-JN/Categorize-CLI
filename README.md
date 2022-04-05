@@ -39,7 +39,7 @@ This command does the same as above but in the directory or path specified
 Categorize ext-all --path "path" 
 ```
 ```
-Categorize ext-all --p "path" 
+Categorize ext-all -p "path" 
 ```
 Commands:
 ```
@@ -59,7 +59,7 @@ This command does the same as above but in the directory or path specified
 Categorize key-all -p "path"
 ```
 ```
-Categorize key-all --p "path"
+Categorize key-all --path "path"
 ```
 ```
 Categorize key -k "keyword" -p "path" 
