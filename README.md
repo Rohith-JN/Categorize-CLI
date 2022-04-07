@@ -88,3 +88,12 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Todo
+
+1) Add the total amount of size of files moved as an output
+2) Remove random characters that appears in the terminal
+3) Make the project compatible with linux
+4) Write tests for the project
+5) Make a mont-year category for organizing
+6) Fix the exceptions in name_category() function
