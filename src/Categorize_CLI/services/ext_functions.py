@@ -8,6 +8,7 @@ from datetime import timedelta
 
 # Group 1: Organize files based on extension
 def all_extensions_category(folder_to_track):
+    size = 0
     movedFiles = False
     count = 0
     start_time = time.monotonic()
@@ -32,8 +33,9 @@ def all_extensions_category(folder_to_track):
                             for folder_item in folder_items:
                                 source = os.path.join(folder_to_track, folder_item)
                                 destination = os.path.join(folder_path, folder_item)
-                                moveIncrementing(source, destination)
                                 count = count + 1
+                                size = size + os.path.getsize(source)
+                                moveIncrementing(source, destination)
                                 movedFiles = True
 
                         if folder_exists:
@@ -41,6 +43,7 @@ def all_extensions_category(folder_to_track):
                                 source = os.path.join(folder_to_track, folder_item)
                                 destination = os.path.join(folder_path, folder_item)
                                 count = count + 1
+                                size = size + os.path.getsize(source)
                                 moveIncrementing(source, destination)
                                 movedFiles = True
 
@@ -48,15 +51,23 @@ def all_extensions_category(folder_to_track):
 
                     displayProgressbar(count)
 
+                    size = int(size/1000000)
+
+                    if len(str(size)) == 4:
+                        size = str(int(size/1000)) + " GB"
+                    else:
+                        size = str(size) + " MB"
+
                     if movedFiles:
                         if count == 1:
-                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
+                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {size}"
                         else:
-                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
+                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {size}"
                     else:
                         return "Files with that extension do not exist in {}".format(folder_to_track)
 
                 except Exception as e:
+                    print(e)
                     return f'{folder_to_track}: is either empty or not organizable'
 
     else:
