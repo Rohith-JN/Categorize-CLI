@@ -1,6 +1,6 @@
 ---
-Name: Bug report
-About: File a bug report
+name: Bug report
+about: File a bug report
 labels: 'Bug'
 
 ---
