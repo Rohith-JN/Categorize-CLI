@@ -1,6 +1,7 @@
 # Categorize-CLI
 
 ![](https://img.shields.io/pypi/v/Categorize-CLI?color=blue&style=flat-square) ![](https://img.shields.io/github/license/Rohith-JN/Categorize-CLI?color=green&style=flat-square)
+[![Downloads](https://static.pepy.tech/personalized-badge/categorize-cli?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/categorize-cli)
 
 Categorize-CLI is a command-line-tool made using python to organize files in a given directory based on categories like
 extension, keyword, creation time, etc.
@@ -92,7 +93,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## Todo
 
 1) Add the total amount of size of files moved as an output
-2) Remove random characters that appears in the terminal
+2) Remove random characters that appear in the terminal
 3) Make the project compatible with linux
 4) Write tests for the project
 5) Make a mont-year category for organizing
