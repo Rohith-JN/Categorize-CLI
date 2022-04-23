@@ -16,13 +16,6 @@ pip install Categorize-CLI
 
 ## Usage
 
-### Safe
-This command will organize all media files in the working directory
-
-```
-Categorize safe
-```
-
 ### Extensions:
 This command will organize the files based on the command specified in the working directory
 
@@ -47,12 +40,6 @@ Commands:
 ```
 
 ### Keyword:
-This command will organize the files based on the common keyword present in the file names in the working directory
-
-```
-Categorize key-all
-```
-
 This command will organize the files based on the specified keyword present in the file names in the working directory
 
 ```
@@ -85,6 +72,9 @@ Categorize [command] --path "path"
 ```
 
 ## Contributing
+
+Before contributing refer to [CONTRIBUTING](https://github.com/Rohith-JN/Categorize-CLI/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT](https://github.com/Rohith-JN/Categorize-CLI/blob/main/CODE_OF_CONDUCT.md)
+
 [Open a pull request](https://github.com/Rohith-JN/Categorize-CLI/pulls)
 
 [Report an issue](https://github.com/Rohith-JN/Categorize-CLI/issues)
