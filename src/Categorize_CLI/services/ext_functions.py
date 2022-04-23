@@ -135,7 +135,3 @@ def extension_category(extension, folder_to_track):
 
     else:
         return f'{folder_to_track}: is either empty or not organizable'
-
-
-def safe(folder_to_track):
-    return extension_category(media, folder_to_track)
