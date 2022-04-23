@@ -32,7 +32,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     project_urls={
-        "Changelog" : "https://github.com/Rohith-JN/Categorize-CLI/CHANGELOG.md",
+        "Changelog" : "https://github.com/Rohith-JN/Categorize-CLI/blob/main/CHANGELOG.md",
         "Issues": "https://github.com/Rohith-JN/Categorize-CLI/issues",
         "Source" : "https://github.com/Rohith-JN/Categorize-CLI"
     },
