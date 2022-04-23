@@ -3,3 +3,4 @@ __pycache__
 .idea
 .pypirc
 Categorize_CLI.egg-info
+.venv
