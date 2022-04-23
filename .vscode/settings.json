@@ -1,0 +1,30 @@
+{
+    "workbench.startupEditor": "none",
+    "terminal.integrated.cursorWidth": 0.5,
+    "workbench.colorTheme": "Material Theme Palenight High Contrast",
+    "bracketPairColorizer.depreciation-notice": false,
+    "files.autoSave": "afterDelay",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "explorer.confirmDelete": false,
+    "dart.openDevTools": "flutter",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "prettier.singleQuote": true,
+    "editor.formatOnSave": true,
+    "editor.parameterHints.enabled": true,
+    "git.confirmSync": false,
+    "powershell.powerShellDefaultVersion": "Windows PowerShell (x86)",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "workbench.iconTheme": null,
+}
