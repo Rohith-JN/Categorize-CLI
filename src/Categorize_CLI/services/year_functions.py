@@ -2,7 +2,7 @@ import os
 import time
 from datetime import timedelta
 
-from src.common.secondary_functions import *
+from common.secondary_functions import *
 
 def year_category(folder_to_track):
     start_time = time.monotonic()

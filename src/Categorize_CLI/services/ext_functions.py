@@ -4,7 +4,7 @@ import re
 import time
 from datetime import timedelta
 
-from src.common.secondary_functions import *
+from common.secondary_functions import *
 
 def all_extensions_category(folder_to_track):
     size = 0
