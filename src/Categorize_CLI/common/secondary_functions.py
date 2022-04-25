@@ -6,6 +6,15 @@ import time
 from .extensions import *
 from progress.bar import IncrementalBar 
 
+def calc_size(size):
+    size = int(size/1000000)
+
+    if len(str(size)) == 4:
+        return str(int(size/1000)) + " GB"
+    else:
+        return str(size) + " MB"
+
+
 def find_prefixes(strings):
     prefix_cnts = Counter()                   
     pattern = re.compile('[^a-zA-Z0-9]')     

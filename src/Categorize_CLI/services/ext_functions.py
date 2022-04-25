@@ -49,18 +49,11 @@ def all_extensions_category(folder_to_track):
 
                     displayProgressbar(count)
 
-                    size = int(size/1000000)
-
-                    if len(str(size)) == 4:
-                        size = str(int(size/1000)) + " GB"
-                    else:
-                        size = str(size) + " MB"
-
                     if movedFiles:
                         if count == 1:
-                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {size}"
+                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
                         else:
-                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {size}"
+                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
                     else:
                         return "Files with that extension do not exist in {}".format(folder_to_track)
 
@@ -74,6 +67,7 @@ def all_extensions_category(folder_to_track):
 
 def extension_category(extension, folder_to_track):
     start_time = time.monotonic()
+    size = 0
     movedFiles = False
     count = 0
     if check_files(folder_to_track):
@@ -99,6 +93,7 @@ def extension_category(extension, folder_to_track):
                                             value):
                                         count = count + 1
                                         source = os.path.join(folder_to_track, filename)
+                                        size = size + os.path.getsize(source)
                                         destination = os.path.join(folder_path, filename)
                                         moveIncrementing(source,destination)  # move all files containing sub_file_name in their filenames
                                         movedFiles = True
@@ -110,6 +105,7 @@ def extension_category(extension, folder_to_track):
                                             value):
                                         count = count + 1
                                         source = os.path.join(folder_to_track, filename)
+                                        size = size + os.path.getsize(source)
                                         destination = os.path.join(folder_path, filename)
                                         moveIncrementing(source,
                                                          destination)  # move all files containing sub_file_name in their filenames
@@ -121,14 +117,13 @@ def extension_category(extension, folder_to_track):
 
                     if movedFiles:
                         if count == 1:
-                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
+                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
                         else:
-                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
+                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
                     else:
                         return "Files with that extension do not exist in {}".format(folder_to_track)
 
                 except Exception as e:
-                    print(e)
                     return f'{folder_to_track}: is either empty or not organizable'
 
     else:

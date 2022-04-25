@@ -6,6 +6,7 @@ from src.Categorize_CLI.common.secondary_functions import *
 
 def year_category(folder_to_track):
     start_time = time.monotonic()
+    size = 0
     movedFiles = False
     years = set()
     count = 0
@@ -32,6 +33,7 @@ def year_category(folder_to_track):
                             if folder_name == file_year:
                                 count = count + 1
                                 source = os.path.join(folder_to_track, filename)
+                                size = size + os.path.getsize(source)
                                 destination = os.path.join(folder_path, filename)
                                 moveIncrementing(source, destination)
                                 movedFiles = True
@@ -45,6 +47,7 @@ def year_category(folder_to_track):
                             if folder_name == file_year:
                                 count = count + 1
                                 source = os.path.join(folder_to_track, filename)
+                                size = size + os.path.getsize(source)
                                 destination = os.path.join(folder_path, filename)
                                 moveIncrementing(source, destination)
                                 movedFiles = True
@@ -55,9 +58,9 @@ def year_category(folder_to_track):
 
             if movedFiles:
                 if count == 1:
-                    return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
+                    return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
                 else:
-                    return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}"
+                    return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
             else:
                 return f'{folder_to_track}: is either empty or not organizable'
 
