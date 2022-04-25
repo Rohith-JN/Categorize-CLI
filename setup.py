@@ -40,6 +40,6 @@ setup(
 
     entry_points=""" 
         [console_scripts] 
-        Categorize=src.__main__:main
+        Categorize=src.Categorize_CLI.__main__:main
         """
 )
