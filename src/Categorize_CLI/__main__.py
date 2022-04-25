@@ -1,10 +1,10 @@
 import os
 import click
 
-from src.common import extensions
-from src.services.ext_functions import *
-from src.services.key_functions import *
-from src.services.year_functions import *
+from common import extensions
+from services.ext_functions import *
+from services.key_functions import *
+from services.year_functions import *
  
 
 class Context:

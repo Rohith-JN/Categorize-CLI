@@ -4,7 +4,7 @@ import re
 import time
 from datetime import timedelta
 
-from src.common.secondary_functions import *
+from common.secondary_functions import *
 
 
 def specific_name_category(keyword, folder_to_track):
