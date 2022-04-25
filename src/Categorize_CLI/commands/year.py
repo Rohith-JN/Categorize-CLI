@@ -1,5 +1,5 @@
 import click
-from src.services.year_functions import *
+from src.Categorize_CLI.services.year_functions import *
 
 class Context:
     def __init__(self, path):
