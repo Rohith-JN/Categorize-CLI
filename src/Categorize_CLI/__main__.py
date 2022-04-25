@@ -5,25 +5,30 @@ from src.Categorize_CLI.common.extensions import *
 from src.Categorize_CLI.services.ext_functions import *
 from src.Categorize_CLI.services.key_functions import *
 from src.Categorize_CLI.services.year_functions import *
- 
 
-class Context:
-    def __init__(self, type, all, keyword, year, path):
-        self.type = type
-        self.all = all
-        self.keyword = keyword
-        self.year = year
-        self.path = path
+class ComplexCLI(click.MultiCommand):
+    def list_commands(self, ctx):
+        commands = []
+        commands_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "commands"))
+        for filename in os.listdir(commands_folder):
+            if filename.endswith(".py") and not filename.startswith("__"):
+                commands.append(filename.replace(".py", ""))
 
-@click.command()
-@click.option("-t", "--type", type=str, help = "Type of extension", required=False)
-@click.option("-a", "--all", is_flag = True, help = "Organize all files based on keyword", required = False)
-@click.option("-k", "--keyword", type=str, help = "Keyword to categorize files", required=False)
-@click.option("-y", "--year", is_flag = True, help = "Organize files based on year", required=False)
-@click.option("-p", "--path", type=str, help = "Path to organize", required=False, default=os.getcwd())
-@click.pass_context
-def main(ctx, type, all, keyword, year, path):
-    """Welcome to Categorize!"""
+        commands.sort()
+        return commands
+
+    def get_command(self, ctx, name):
+        try:
+            mod = __import__(f"src.Categorize_CLI.commands.{name}", None, None, ["main"])
+        except ImportError:
+            return
+        return mod.main
+
+
+@click.command(cls=ComplexCLI)
+@click.version_option(package_name='Categorize-CLI')
+def main():
+    """Categorize files based on different categories"""
 
     
 
