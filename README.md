@@ -17,7 +17,7 @@ pip install Categorize-CLI
 ## Usage
 
 ### Extensions:
-This command will organize the files based on the command specified in the working directory
+This command will organize the files based on the specified extension type (ex: image, audio, video) in the working directory
 
 ```
 Categorize ext -t [command]
@@ -25,12 +25,6 @@ Categorize ext -t [command]
 
 ```
 Categorize ext --type [command]
-```
-
-This command will organize all the files based on extension in the working directory
-
-```
-Categorize ext-all
 ```
 
 Commands:
