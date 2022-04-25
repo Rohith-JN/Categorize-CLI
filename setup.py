@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 setup(
 
     name='Categorize-CLI',
-    version='1.0.0',
+    version='0.6.0',
     description='Categorize-CLI is a command-line-tool made to help you categorize/organize files in a given directory',
     url="https://github.com/Rohith-JN/Categorize-CLI",
     author="Rohith Nambiar",
