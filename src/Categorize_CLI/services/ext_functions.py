@@ -2,11 +2,19 @@ import os
 import collections
 import time
 from datetime import timedelta
+from colorama import init
+from colorama import Fore
 
 from src.Categorize_CLI.common.secondary_functions import *
 
-def all_extensions_category(folder_to_track):
+
+init()
+
+def all_extensions_category(folder_to_track, verbose):
+    moved = {}
+    movedList = []
     size = 0
+    no_of_files_moved = 0
     movedFiles = False
     count = 0
     start_time = time.monotonic()
@@ -31,6 +39,7 @@ def all_extensions_category(folder_to_track):
                             for folder_item in folder_items:
                                 source = os.path.join(folder_to_track, folder_item)
                                 destination = os.path.join(folder_path, folder_item)
+                                moved[folder_item] = folder_name + '/' + folder_item
                                 count = count + 1
                                 size = size + os.path.getsize(source)
                                 moveIncrementing(source, destination)
@@ -40,6 +49,7 @@ def all_extensions_category(folder_to_track):
                             for folder_item in folder_items:
                                 source = os.path.join(folder_to_track, folder_item)
                                 destination = os.path.join(folder_path, folder_item)
+                                moved[folder_item] = folder_name + '/' + folder_item
                                 count = count + 1
                                 size = size + os.path.getsize(source)
                                 moveIncrementing(source, destination)
@@ -47,22 +57,35 @@ def all_extensions_category(folder_to_track):
 
                     end_time = time.monotonic()
 
+                    for key, value in moved.items():
+                        no_of_files_moved = no_of_files_moved + 1
+                        movedList.append(f"{no_of_files_moved}) {key} --> {value}")
+
+                    output = '\n'.join(map(str, movedList))
+
+                    print(os.linesep)
                     displayProgressbar(count)
 
                     if movedFiles:
-                        if count == 1:
-                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
+                        if count == 1 and verbose:
+                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}{os.linesep}{os.linesep}Files Moved:{os.linesep}{output}{os.linesep}"
+                        elif count != 1 and verbose:
+                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}{os.linesep}{os.linesep}Files Moved:{os.linesep}{output}{os.linesep}"
+                        elif count == 1 and not verbose:
+                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}{os.linesep}"
+                        elif count != 1 and not verbose:
+                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}{os.linesep}"
                         else:
-                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
+                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}{os.linesep}"
+
                     else:
-                        return "Files with that extension do not exist in {}".format(folder_to_track)
+                        return os.linesep + Fore.RED + f'{folder_to_track}: is either empty or not organizable' + os.linesep
 
                 except Exception as e:
-                    print(e)
-                    return f'{folder_to_track}: is either empty or not organizable'
+                    return os.linesep + Fore.RED + f'{folder_to_track}: is either empty or not organizable' + os.linesep
 
     else:
-        return f'{folder_to_track}: is either empty or not organizable'
+        return os.linesep+ Fore.RED + f'{folder_to_track}: is either empty or not organizable' + os.linesep
 
 
 def extension_category(extension, folder_to_track):
@@ -95,7 +118,7 @@ def extension_category(extension, folder_to_track):
                                         source = os.path.join(folder_to_track, filename)
                                         size = size + os.path.getsize(source)
                                         destination = os.path.join(folder_path, filename)
-                                        moveIncrementing(source,destination)  # move all files containing sub_file_name in their filenames
+                                        moveIncrementing(source,destination)
                                         movedFiles = True
 
                         if folder_exists:
@@ -108,7 +131,7 @@ def extension_category(extension, folder_to_track):
                                         size = size + os.path.getsize(source)
                                         destination = os.path.join(folder_path, filename)
                                         moveIncrementing(source,
-                                                         destination)  # move all files containing sub_file_name in their filenames
+                                                         destination)
                                         movedFiles = True
 
                     end_time = time.monotonic()
@@ -117,9 +140,12 @@ def extension_category(extension, folder_to_track):
 
                     if movedFiles:
                         if count == 1:
-                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
+                            return f"Successfully moved {count} file{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}{os.linesep}"
+                        elif count != 1:
+                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}{os.linesep}"
                         else:
-                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}"
+                            return f"Successfully moved {count} files{os.linesep}Time taken: {timedelta(seconds=end_time - start_time)}{os.linesep}Total size of files moved: {calc_size(size)}{os.linesep}"
+
                     else:
                         return "Files with that extension do not exist in {}".format(folder_to_track)
 
