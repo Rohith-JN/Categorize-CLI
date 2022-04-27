@@ -1,6 +1,10 @@
 import click
 from src.Categorize_CLI.common.extensions import extensions
 from src.Categorize_CLI.services.ext_functions import *
+from colorama import init
+from colorama import Fore
+
+init()
 
 class Context:
     def __init__(self, type, path, all, verbose):
@@ -25,10 +29,10 @@ def main(ctx, type, path, all, verbose):
 
     categories = [key for key, value in extensions.items()]
     if extension in categories and os.path.exists(folder_to_track) and not all:
-        click.echo(extension_category(extensions[extension], folder_to_track))
+        click.echo(extension_category(extensions[extension], folder_to_track, verbose))
     elif not extension in categories and not all:
-        click.echo("{} is not one of the types of extensions".format(extension))
+        click.echo(os.linesep + Fore.RED + "Error: {} is not one of the types of extensions".format(extension) + os.linesep)
     elif not os.path.exists(folder_to_track):
-        click.echo("{}: does not exist".format(folder_to_track))
+        click.echo(os.linesep + Fore.RED + "Error: {} does not exist".format(folder_to_track) + os.linesep)
     elif os.path.exists(folder_to_track) and all:
         click.echo(all_extensions_category(folder_to_track, verbose))
