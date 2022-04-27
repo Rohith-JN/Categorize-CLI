@@ -1,6 +1,6 @@
 
 extensions = {
-    "text": [".txt", ".rtf", ".in", ".out"],
+    "text": [".txt", ".rtf"],
     "image": [".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff", ".webp"],
     "audio" : [".wav", ".mp3", ".ogg", ".gsm", ".dct", ".flac", ".au", ".aiff", ".vox", "raw", ".wma", ".aac", ".atrac",
               ".ra", ".oma", ".omg", ".atp", ".waptt", ".i3pack", ".3ga", ".opus", ".cda", ".wpl", ".rec", ".vdjsample",
