@@ -6,13 +6,30 @@ import time
 from .extensions import *
 from progress.bar import IncrementalBar 
 
-def calc_size(size):
-    size = int(size/1000000)
 
-    if len(str(size)) == 4:
-        return str(int(size/1000)) + " GB"
-    else:
-        return str(size) + " MB"
+UNITS_MAPPING = [
+    (1<<50, ' PB'),
+    (1<<40, ' TB'),
+    (1<<30, ' GB'),
+    (1<<20, ' MB'),
+    (1<<10, ' KB'),
+    (1, (' byte', ' bytes')),
+]
+
+
+def calc_size(bytes, units=UNITS_MAPPING):
+    for factor, suffix in units:
+        if bytes >= factor:
+            break
+    amount = int(bytes / factor)
+
+    if isinstance(suffix, tuple):
+        singular, multiple = suffix
+        if amount == 1:
+            suffix = singular
+        else:
+            suffix = multiple
+    return str(amount) + suffix
 
 
 def find_prefixes(strings):
@@ -51,6 +68,7 @@ def find_prefixes(strings):
                 
     return prefixes
 
+
 def find_common_keyword(filenames):
     final = []
     sub_strings = []
@@ -69,6 +87,7 @@ def find_common_keyword(filenames):
 
     return set(final)
 
+
 def get_key(val):
     for key, value in extensions.items():
          if val == value:
@@ -83,6 +102,7 @@ def check_files(folder_to_track):
         return False
     else: 
         return True
+
 
 def moveIncrementing(source, destination):
     try:
@@ -104,7 +124,9 @@ def moveIncrementing(source, destination):
     except Exception as e:
         pass
 
+
 def displayProgressbar(item_count):
+    print(os.linesep)
     if (item_count > 0):
         bar = IncrementalBar('Organizing...', max=item_count)
 
