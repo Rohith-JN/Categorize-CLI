@@ -58,7 +58,7 @@ def all_extensions_category(folder_to_track, verbose):
 
                     for key, value in moved.items():
                         no_of_files_moved = no_of_files_moved + 1
-                        movedList.append(f"{no_of_files_moved}) {key} --> {value}")
+                        movedList.append(f"{no_of_files_moved}) {key} {Fore.GREEN} --> {Fore.WHITE} {value}")
 
                     output = '\n'.join(map(str, movedList))
 
@@ -141,7 +141,7 @@ def extension_category(extension, folder_to_track, verbose):
 
                     for key, value in moved.items():
                         no_of_files_moved = no_of_files_moved + 1
-                        movedList.append(f"{no_of_files_moved}) {key} --> {value}")
+                        movedList.append(f"{no_of_files_moved}) {key} {Fore.GREEN} --> {Fore.WHITE} {value}")
 
                     output = '\n'.join(map(str, movedList))
 
