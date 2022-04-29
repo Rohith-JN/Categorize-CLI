@@ -1,6 +1,40 @@
-.venv
+.configs
+.pytest_cache/
+
+### Python ###
+# Byte-compiled / optimized / DLL files
 __pycache__
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+### VisualStudioCode ###
+.vscode
+.history
+
+# End of https://www.gitignore.io/api/visualstudiocode
 .idea
-.pypirc
-Categorize_CLI.egg-info
-dist
