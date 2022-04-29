@@ -93,6 +93,13 @@ def get_key(val):
          if val == value:
              return key
 
+
+def get_value(one):
+    for key, value in extensions.items():
+         if one == key:
+             return value
+
+
 def check_files(folder_to_track):
     files = os.listdir(folder_to_track)
     isdir = any(os.path.isdir(os.path.join(folder_to_track, file + '//')) for file in files)
@@ -130,7 +137,7 @@ def displayProgressbar(item_count):
     if (item_count > 0):
         bar = IncrementalBar('Organizing...', max=item_count)
 
-        for i in range(item_count):
+        for _ in range(item_count):
             bar.next()
             time.sleep(0.01)
 
