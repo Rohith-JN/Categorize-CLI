@@ -6,7 +6,7 @@ from datetime import timedelta
 from colorama import init
 from colorama import Fore
 
-from src.Categorize_CLI.common.secondary_functions import *
+from src.Categorize_CLI.common.utils import *
 
 init()
 
