@@ -64,14 +64,3 @@ If you do not want to organize files in the working directory and want to organi
 ```
 Categorize [command] --path "path"
 ```
-
-## Contributing
-
-Before contributing refer to [CONTRIBUTING](https://github.com/Rohith-JN/Categorize-CLI/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT](https://github.com/Rohith-JN/Categorize-CLI/blob/main/CODE_OF_CONDUCT.md)
-
-[Open a pull request](https://github.com/Rohith-JN/Categorize-CLI/pulls)
-
-[Report an issue](https://github.com/Rohith-JN/Categorize-CLI/issues)
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
