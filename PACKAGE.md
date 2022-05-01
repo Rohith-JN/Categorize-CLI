@@ -1,12 +1,24 @@
-<h1 align = "center">Categorize-CLI<h1>
+<div align="center">
+<h1>Categorize-CLI</h1>
+<a href="https://github.com/Rohith-JN/Categorize-CLI/blob/main/LICENSE.txt">
+  <img src="https://img.shields.io/github/license/Rohith-JN/Categorize-CLI?color=blue&style=flat-square" title="License">
+</a>
+<a href="https://pypi.org/project/Categorize-CLI/">
+  <img src="https://img.shields.io/pypi/v/Categorize-CLI?color=blue&style=flat-square" title="PyPI Version">
+</a>
+<p>A command-line-tool to help you organize files in a given directory
+</p>
 
-![](https://img.shields.io/pypi/v/Categorize-CLI?color=blue&style=flat-square) ![](https://img.shields.io/github/license/Rohith-JN/Categorize-CLI?color=green&style=flat-square)
-[![Downloads](https://static.pepy.tech/personalized-badge/categorize-cli?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/categorize-cli)
+</div>
 
+---
 
-Categorize-CLI is a command-line-tool to help you organize files in a given directory based on categories like
-extension, keyword, year-created, etc.
- 
+## Categorize-CLI v1.0.0
+
+A new update aimed to simplify the command-line-interface while increasing functionality
+
+- [View the changelog](https://github.com/Rohith-JN/Categorize-CLI/blob/main/CHANGELOG.md) for all the new features!
+
 ## Usage
 
 ### Extensions:
@@ -35,10 +47,10 @@ Commands:
 This command will organize the files based on the specified keyword present in the file names in the working directory
 
 ```
-Categorize key -k "keyword"
+Categorize key -k [command]
 ```
 ```
-Categorize key --keyword "keyword"
+Categorize key --keyword [command]
 ```
 
 ### Year-created:
@@ -49,10 +61,18 @@ This command will organize files based on year created in the working directory
 Categorize year
 ```
 
-If you do not want to organize files in the working directory and want to organize files in another path then you can just specify the path using this option `-p` or `--path`
+
+### Other
+If you want to organize files belonging to another directory then you can just specify the path using this option `-p` or `--path`
 
 ```
-Categorize [command] --path "path"
+Categorize [command] --path [command]
+```
+
+If you want to view the full output you can use the verbose flag `-v` or `--verbose`
+
+```
+Categorize [command] --verbose
 ```
 
 Command line interface
