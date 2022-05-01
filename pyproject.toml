@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "Categorize-CLI"
-version = "0.6.0"
+version = "1.0.0"
 description = "Categorize-CLI is a command-line-tool made to help you categorize/organize files in a given directory"
 authors = ["Rohith Nambiar <rohithnambiar04@gmail.com>"]
 license= "MIT"
-readme = "README.md"
+readme = "PACKAGE.md"
 packages = [{ include = "src/Categorize_CLI" }]
 repository = "https://github.com/Rohith-JN/Categorize-CLI"
 keywords = [
@@ -20,7 +20,6 @@ classifiers=[
     "License :: OSI Approved :: MIT License",
     "Intended Audience :: End Users/Desktop",
     "Natural Language :: English",
-    "Programming Language :: Python :: 3",
     "Operating System :: Microsoft :: Windows",
     "Topic :: Utilities",
 ]
