@@ -5,6 +5,9 @@
 # Byte-compiled / optimized / DLL files
 __pycache__
 
+# Build files 
+build.txt
+
 # Distribution / packaging
 .Python
 build/
