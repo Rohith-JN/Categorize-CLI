@@ -12,6 +12,13 @@
 </div>
 
 ---
+## Installation
+Categorize-CLI works on python 3.7 and above
+
+Installation is done via pip.
+```commandline
+pip install Categorize-CLI
+```
 
 ## Usage
 
@@ -56,4 +63,21 @@ If you want to organize files belonging to another directory then you can just s
 
 ```
 Categorize [command] --path [command]
+```
+
+## Command-line-interface
+
+```
+Usage: Categorize [OPTIONS] COMMAND [ARGS]...
+
+  Categorize files based on different categories
+
+Options:
+  --version  Show the version and exit.
+  --help     Show this message and exit.
+
+Commands:
+  ext   Organize files based on specified extension (ex: image, video)
+  key   Organize files based on specified keyword
+  year  Organize files based on year created
 ```
