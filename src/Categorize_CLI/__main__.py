@@ -1,9 +1,5 @@
-import os
 import click
 
-from src.Categorize_CLI.common.extensions import *
-from src.Categorize_CLI.services.ext_functions import *
-from src.Categorize_CLI.services.key_functions import *
 from src.Categorize_CLI.services.year_functions import *
 from src.Categorize_CLI.__version__ import __version__
 
