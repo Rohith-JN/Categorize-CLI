@@ -5,6 +5,7 @@ from src.Categorize_CLI.common.extensions import *
 from src.Categorize_CLI.services.ext_functions import *
 from src.Categorize_CLI.services.key_functions import *
 from src.Categorize_CLI.services.year_functions import *
+from src.Categorize_CLI.__version__ import __version__
 
 class ComplexCLI(click.MultiCommand):
     def list_commands(self, ctx):
@@ -26,7 +27,7 @@ class ComplexCLI(click.MultiCommand):
 
 
 @click.command(cls=ComplexCLI)
-@click.version_option(package_name='Categorize-CLI')
+@click.version_option(__version__)
 def main():
     """Categorize files based on different categories"""
 
