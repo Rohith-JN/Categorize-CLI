@@ -29,7 +29,6 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip setuptools
           python3 -m pip install poetry
-          cd D:\a\Categorize-CLI
           python3 -m poetry shell
           python3 -m pip install -r requirements.txt
           python3 -m pip install -e .
