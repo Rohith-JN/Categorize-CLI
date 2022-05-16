@@ -85,7 +85,7 @@ def all_extensions_category(folder_to_track, verbose):
         return os.linesep + Fore.RED + f'Error: {folder_to_track} is empty' + os.linesep
     elif all(os.path.isdir(os.path.join(folder_to_track, file + '//')) for file in os.listdir(folder_to_track)):
         return os.linesep + Fore.RED + f'Error: {folder_to_track} only contains folders' + os.linesep
-    else: 
+    else:
         return os.linesep + Fore.RED + f'Error: Could not organize {folder_to_track}' + os.linesep
 
 
@@ -107,7 +107,7 @@ def extension_category(extension, folder_to_track, verbose):
                             if not os.path.isdir(os.path.join(folder_to_track, filename)) and any(
                                     filename.endswith(value) for filename in os.listdir(folder_to_track)):
                                 file_mappings.setdefault(get_key(extension), []).append(filename)
-                                
+
                     for folder_name, folder_items in file_mappings.items():
                         folder_path = os.path.join(folder_to_track, folder_name)
                         folder_exists = os.path.exists(folder_path)
@@ -168,5 +168,5 @@ def extension_category(extension, folder_to_track, verbose):
         return os.linesep + Fore.RED + f'Error: {folder_to_track} is empty' + os.linesep
     elif all(os.path.isdir(os.path.join(folder_to_track, file + '//')) for file in os.listdir(folder_to_track)):
         return os.linesep + Fore.RED + f'Error: {folder_to_track} only contains folders' + os.linesep
-    else: 
+    else:
         return os.linesep + Fore.RED + f'Error: Could not organize {folder_to_track}' + os.linesep
